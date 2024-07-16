@@ -35,6 +35,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 bindsym $mod+f fullscreen
+bindsym $mod+x exec ~/.config/scripts/lock
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
