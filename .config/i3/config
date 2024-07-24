@@ -1,11 +1,12 @@
 # Define variables for programs
 set $file_manager "pcmanfm"
 set $terminal "terminator"
-set $browser "firefox"
+set $browser "brave-browser"
+set $editor "pulsar"
 
 # Basic configuration
 set $mod Mod4
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 
 # Key bindings
@@ -58,27 +59,27 @@ set $ws8 "8: Tools"
 set $ws9 "9: Files"
 set $ws10 "10: Misc"
 
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Reload and restart i3
 bindsym $mod+Shift+c reload
@@ -103,41 +104,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Startup applications
-exec_always --no-startup-id /home/jackjack/.config/polybar/launch.sh
-exec_always feh --bg-fill /home/jackjack/Pictures/wallpapers/i3.png
+exec_always feh --bg-fill /home/jackjack/Pictures/wallpapers/wallhaven-rrxqm1.png
 exec --no-startup-id /usr/lib/gsd-xsettings
 exec_always picom -f
 
-bar {
-    colors {
-        background #2f343f
-        separator #4b5262
-
-        focused_workspace       #2f343f #bf616a #d8dee8
-        active_workspace        #2f343f #2f343f #d8dee8
-        inactive_workspace      #2f343f #2f343f #d8dee8
-        urgent_workspace        #2f343f #ebcb8b #2f343f
-
-        # Window title colors
-        focused_workspace       #2f343f #bf616a #d8dee8
-        active_workspace        #2f343f #d8dee8 #2f343f
-        inactive_workspace      #2f343f #2f343f #d8dee8
-    }
-    status_command i3status
-}
-
-set $bgcolor    #523d64
-set $in-bgcolor #363636
-set $text       #ffffff
-set $u-bgcolor  #ff0000
-set $indicator  #a8a3c1
-set $in-text    #969696
-
-# Client (window) appearance settings
-client.focused          $bgcolor        $bgcolor        $text           $indicator
-client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
+# Client (window) appearance settings with colors from wallpaper
+client.focused          #ff3366 #ff3366 #ffffff #a8a3c1
+client.unfocused        #2f343f #2f343f #969696 #2f343f
+client.focused_inactive #2f343f #2f343f #969696 #2f343f
+client.urgent           #ebcb8b #ebcb8b #ffffff #ebcb8b
 
 # Default gaps
 gaps inner 15
@@ -155,6 +130,20 @@ set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 
 bindsym $mod+Shift+g mode "$mode_gaps"
+
+bar {
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    colors {
+        background #2f343f
+        separator #4b5262
+
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspace        #2f343f #ebcb8b #2f343f
+    }
+}
+
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
